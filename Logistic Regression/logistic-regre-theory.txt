@@ -1,0 +1,142 @@
+1. What is Logistic Regression, and how does it differ from Linear Regression.
+
+    Logistic Regression is used for classification tasks where the output is categorical (e.g., yes/no, 0/1).
+    Linear Regression is used for regression tasks where the output is continuous.
+    Logistic Regression outputs probabilities using the sigmoid function, whereas Linear Regression predicts real values.
+
+2. What is the mathematical equation of Logistic Regression.
+
+     Logistic Regression Hypothesis (Sigmoid Function):
+       P(y=1|x) = σ(z) = 1 / (1 + e^(-z))
+    Where:
+    σ(z) is the sigmoid function
+    z = β0 + β1*x1 + β2*x2 + ... + βn*xn
+
+3. Why do we use the Sigmoid function in Logistic Regression. 
+
+    The sigmoid function maps any real-valued number to a probability between 0 and 1, making it ideal for binary classification.
+
+4. What is the cost function of Logistic Regression. 
+     
+    Cost Function (Log Loss / Binary Cross-Entropy):
+    J(θ) = -(1/m) * Σ [ yi * log(hθ(xi)) + (1 - yi) * log(1 - hθ(xi)) ]
+    This is called log loss or binary cross-entropy loss.
+
+5. What is Regularization in Logistic Regression? Why is it needed. 
+
+    Regularization adds a penalty term to the cost function to avoid overfitting. 
+    It helps in simplifying the model and improving generalization.
+
+6. Explain the difference between Lasso, Ridge, and Elastic Net regression?
+
+Method	                                           Regularization	                              Effect on Coefficients
+Lasso (L1)		                                   ( \lambda \sum                                  \beta_j
+Ridge (L2)	                                           λ∑(β_j)^2                                 Shrinks coefficients but does not make them zero
+Elastic Net                                        ( \lambda_1 \sum                                 \beta_j
+
+7. When should we use Elastic Net instead of Lasso or Ridge. 
+
+    When you have many correlated features.
+    Elastic Net combines feature selection (Lasso) with stability (Ridge).
+
+8. What is the impact of the regularization parameter (λ) in Logistic Regression.
+
+    Small λ: Low regularization → higher chance of overfitting.
+    Large λ: Strong regularization → underfitting may occur.
+    Choosing λ is critical for bias-variance tradeoff.
+
+9. What are the key assumptions of Logistic Regression.
+
+    The dependent variable is binary.
+    No multicollinearity among independent variables.
+    Log-odds are linearly related to predictors.
+    Large sample size is preferred for better approximation.
+
+10. What are some alternatives to Logistic Regression for classification tasks.
+
+    - Decision Trees
+    - Random Forest
+    - Support Vector Machines (SVM)
+    - k-Nearest Neighbors (k-NN)
+    - Naive Bayes
+    - Gradient Boosting (XGBoost, LightGBM)
+
+11. What are Classification Evaluation Metrics.
+
+    - Accuracy
+    - Precision
+    - Recall
+    - F1-score
+    - ROC-AUC Score
+    - Confusion Matrix
+
+12. How does class imbalance affect Logistic Regression.
+
+    - The model may be biased toward the majority class.
+    - Leads to poor recall for the minority class.
+    - Use techniques like:
+    - Resampling (SMOTE, undersampling)
+    - Class weighting
+    - Alternative metrics (e.g., F1-score, ROC-AUC)
+
+13. What is Hyperparameter Tuning in Logistic Regression.
+
+    Adjusting parameters like:
+       - Regularization strength (C = 1/λ)
+       - Penalty type (L1, L2, Elastic Net)
+       - Solver choice
+       - Tuned using methods like GridSearchCV or RandomizedSearchCV.
+
+14. What are different solvers in Logistic Regression? Which one should be used.
+
+   - liblinear – good for small datasets and L1 regularization.
+   - saga – supports Elastic Net, works on large datasets.
+   - lbfgs – default solver, good for L2 regularization.
+   - newton-cg – similar to lbfgs, supports multiclass.
+        Use saga for Elastic Net or large datasets.
+
+15. How is Logistic Regression extended for multiclass classification.
+
+    Two approaches:
+    One-vs-Rest (OvR): Trains one classifier per class.
+    Multinomial Logistic Regression (Softmax): One model predicts all classes at once using softmax function.
+
+16. What are the advantages and disadvantages of Logistic Regression.
+
+    Advantages:
+    Simple and interpretable
+    Works well with linearly separable classes
+    Fast to train
+    
+    Disadvantages:
+    Poor performance with complex relationships
+    Sensitive to outliers and multicollinearity
+    Can underperform on large feature spaces
+
+17. What are some use cases of Logistic Regression.
+
+    - Email spam detection
+    - Credit scoring
+    - Customer churn prediction
+    - Medical diagnosis (e.g., disease prediction)
+    - Marketing campaign response modeling
+
+18. What is the difference between Softmax Regression and Logistic Regression.
+
+Aspect	                Logistic Regression	                  Softmax Regression
+
+Output	                Binary (2 classes)	                   Multiclass
+Function	            Sigmoid	                                Softmax
+Usage	               Binary classification	        Multiclass classification (3+)
+
+19. How do we choose between One-vs-Rest (OvR) and Softmax for multiclass classification.
+
+    OvR is simpler and works well with imbalanced data.
+    Softmax is preferred when classes are mutually exclusive and balanced.
+
+20. How do we interpret coefficients in Logistic Regression?
+
+    Each coefficient 𝛽_𝑗 shows the log-odds change for a unit increase in the feature.
+    𝑒𝛽_𝑗 : odds ratio → how the odds of the outcome change.
+         𝛽_𝑗 >0: increases the likelihood of class 1.
+         𝛽_𝑗 <0: decreases the likelihood of class 1.
