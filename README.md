@@ -1,1 +1,2 @@
-# logistic-regression
+# Logistic-regression
+Theory & Practical
